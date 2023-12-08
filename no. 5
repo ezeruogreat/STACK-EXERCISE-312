@@ -1,0 +1,22 @@
+def binary_to_decimal(binary_str):
+    stack = []
+    decimal = 0
+    weight = 0
+
+    for bit in binary_str[::-1]:
+        if bit == '1':
+            decimal += 2 ** weight
+        weight += 1
+
+    return decimal
+
+def test_binary_to_decimal():
+    test_values = ["11000101", "10101010", "11111111", "10000000", "1111100000"]
+
+    for binary_str in test_values:
+        decimal_value = binary_to_decimal(binary_str)
+        print(f"Binary: {binary_str}  -->  Decimal: {decimal_value}")
+
+# Test the function
+if __name__ == "__main__":
+    test_binary_to_decimal()
