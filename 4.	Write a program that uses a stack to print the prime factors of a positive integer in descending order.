@@ -1,0 +1,42 @@
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num**0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+def prime_factors(n):
+    stack = []
+    i = 2
+
+    while i <= n:
+        if n % i == 0 and is_prime(i):
+            stack.append(i)
+            n //= i
+        else:
+            i += 1
+
+    return stack
+
+def print_prime_factors_in_descending_order(n):
+    factors = prime_factors(n)
+
+    if not factors:
+        print(f"{n} has no prime factors.")
+        return
+
+    print(f"Prime factors of {n} in descending order:")
+    while factors:
+        print(factors.pop(), end=" ")
+
+# Example usage:
+if __name__ == "__main__":
+    try:
+        num = int(input("Enter a positive integer: "))
+        if num > 0:
+            print_prime_factors_in_descending_order(num)
+        else:
+            print("Please enter a positive integer.")
+    except ValueError:
+        print("Invalid input. Please enter a valid positive integer.")
