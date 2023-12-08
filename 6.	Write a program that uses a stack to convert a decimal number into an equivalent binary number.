@@ -1,0 +1,22 @@
+def decimal_to_binary(decimal_num):
+    stack = []
+
+    while decimal_num > 0:
+        remainder = decimal_num % 2
+        stack.append(str(remainder))
+        decimal_num //= 2
+
+    binary_str = "".join(stack[::-1])
+
+    return binary_str if binary_str else "0"
+
+def test_decimal_to_binary():
+    test_values = [13, 42, 255, 128, 240]
+
+    for decimal_num in test_values:
+        binary_value = decimal_to_binary(decimal_num)
+        print(f"Decimal: {decimal_num}  -->  Binary: {binary_value}")
+
+# Test the function
+if __name__ == "__main__":
+    test_decimal_to_binary()
